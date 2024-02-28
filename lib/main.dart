@@ -1,28 +1,24 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:window_manager/window_manager.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
-  // For full-screen example
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(navigatorKey: navigatorKey, home: ExampleBrowser());
   }
 }
 
 class ExampleBrowser extends StatefulWidget {
-  @override
   State<ExampleBrowser> createState() => _ExampleBrowser();
 }
 
@@ -32,7 +28,6 @@ class _ExampleBrowser extends State<ExampleBrowser> {
   final List<StreamSubscription> _subscriptions = [];
   bool _isWebviewSuspended = false;
 
-  @override
   void initState() {
     super.initState();
     initPlatformState();
